@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sabrina Vique — Escritora</title>
+
+  <style>
+    :root{
+      --bg:#fbf8f6;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#c99aa3;
+      --accent-2:#7fb3c9;
+      --pill-bg:rgba(0,0,0,0.06);
+      --radius:12px;
+      --max-width:1100px;
+      --shadow: 0 8px 30px rgba(16,24,40,0.06);
+      --text:#222;
+      --transition:250ms cubic-bezier(.2,.9,.2,1);
+    }
+    /* Dark mode variables */
+    .dark {
+      --bg:#0f1113;
+      --card:#0b0d0f;
+      --muted:#98a0a6;
+      --text:#e6eef2;
+      --pill-bg:rgba(255,255,255,0.03);
+      --shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Playfair+Display:wght@400;700&display=swap');
+
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:"Merriweather", Georgia, serif;-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
+    .site-wrap{max-width:var(--max-width);margin:28px auto;padding:18px}
+
+    /* Header */
+    header.app-header{background:linear-gradient(180deg,var(--accent-2),#2f4b56);color:#fff;border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:18px;box-shadow:var(--shadow);transition:box-shadow var(--transition) }
+    header .logo{display:flex;align-items:center;gap:14px}
+    header img{height:72px;width:72px;border-radius:10px;object-fit:cover;border:3px solid rgba(255,255,255,0.12)}
+    header h1{margin:0;font-size:1.55rem;font-family:'Playfair Display', serif;letter-spacing:0.2px}
+    header p{margin:0;font-size:0.95rem;opacity:0.95;color:rgba(255,255,255,0.95)}
+
+    /* Top controls */
+    .top-controls{margin-left:auto;display:flex;gap:10px;align-items:center}
+    .toggle-btn{background:rgba(255,255,255,0.12);border:0;color:white;padding:8px 10px;border-radius:10px;cursor:pointer;font-weight:700}
+    .small-pill{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.08);font-weight:700;color:#fff}
+
+    /* Nav */
+    nav.site-nav{display:flex;gap:10px;margin:16px 0;flex-wrap:wrap}
+    nav a{background:var(--pill-bg);padding:10px 14px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:8px;transition:all var(--transition)}
+    nav a.active{background:linear-gradient(180deg,#ffffff22,#ffffff11);color:var(--text);box-shadow: inset 0 -2px 0 rgba(0,0,0,0.06)}
+
+    /* Main cards */
+    main .card{background:var(--card);padding:20px;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:18px;transition:transform var(--transition)}
+    main .card:hover{transform:translateY(-3px)}
+    .hero{display:flex;flex-direction:column;gap:10px}
+    .hero h2{margin:0;color:#1f2a38;font-family:'Playfair Display', serif}
+    .hero p{margin:0;color:var(--muted);line-height:1.6;font-size:1rem}
+
+    .two-col{display:grid;grid-template-columns:1fr 340px;gap:18px;margin-top:16px}
+    .novidades{padding:14px;border-left:4px solid var(--accent-2);background:#fbfdff;border-radius:8px}
+
+    /* Contos list */
+    .contos-list{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+    .conto{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fcfbfb);border:1px solid rgba(0,0,0,0.04)}
+    .meta{display:flex;gap:12px;align-items:center}
+    .cover-thumb{width:70px;height:100px;background:#eee;border-radius:6px;object-fit:cover;flex-shrink:0}
+    .title{font-weight:700;font-family:'Playfair Display', serif}
+    .by{color:var(--muted);font-size:0.9rem}
+    .actions{display:flex;gap:8px}
+
+    .btn{border:0;padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700;font-family:inherit;transition:transform 140ms}
+    .btn:hover{transform:translateY(-3px)}
+    .btn.read{background:var(--accent-2);color:white}
+    .btn.epub{background:linear-gradient(90deg,var(--accent),#d7a9b9);color:white}
+    .btn.pdf{background:#f3f4f6;color:#123;border:1px solid rgba(0,0,0,0.05)}
+
+    /* Reader modal */
+    .modal{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;padding:18px;z-index:1200}
+    .modal.open{display:flex}
+    .modal .box{width:100%;max-width:980px;background:var(--card);border-radius:12px;padding:14px;height:86vh;overflow:auto;box-shadow:var(--shadow)}
+    .modal .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .modal iframe{width:100%;height:calc(86vh - 80px);border:0;border-radius:6px}
+
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:0.9rem}
+
+    /* About section image */
+    .about-grid{display:flex;gap:16px;align-items:center}
+    .about-img{width:120px;height:120px;border-radius:12px;object-fit:cover;flex-shrink:0;border:4px solid #fff;box-shadow:0 6px 18px rgba(16,24,40,0.08)}
+
+    /* responsive */
+    @media (max-width:900px){.two-col{grid-template-columns:1fr}header img{height:56px;width:56px}.cover-thumb{display:none}.about-grid{flex-direction:column;align-items:flex-start}}
+
+    /* helpers */
+    .muted{color:var(--muted)}
+    .spacer{height:12px}
+    .link-like{color:var(--accent-2);text-decoration:underline}
+    .pill{display:inline-block;background:var(--pill-bg);padding:6px 10px;border-radius:999px;font-weight:700}
+
+    /* subtle animations */
+    .fade-in{opacity:0;transform:translateY(8px);animation:fadeIn .6s forwards;}
+    @keyframes fadeIn{to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <div class="site-wrap fade-in" id="siteWrap">
+    <!-- Header with photo -->
+    <header class="app-header card" role="banner" aria-label="Identificação da autora">
+      <div class="logo">
+        <img src="/mnt/data/221e7127-5799-4758-a37a-6c2b2ed4c69d.png" alt="Sabrina Vique" />
+      </div>
+      <div>
+        <h1>Sabrina Vique</h1>
+        <p>Escritora — contos, reflexões e histórias</p>
+      </div>
+
+      <div class="top-controls" role="group" aria-label="controles do site">
+        <button id="toggleDark" class="toggle-btn" title="Alternar modo escuro">Dark</button>
+        <div class="small-pill">Escritora</div>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="site-nav" role="navigation" aria-label="menu principal">
+      <a href="#inicio" class="active" data-tab>Início</a>
+      <a href="#sobre" data-tab>Sobre mim</a>
+      <a href="#contos" data-tab>Contos</a>
+      <a href="#livros" data-tab>Livros</a>
+      <a href="#redes" data-tab>Minhas redes sociais</a>
+    </nav>
+
+    <main>
+      <!-- INÍCIO -->
+      <section id="inicio" class="card tab" data-tab-content>
+        <div class="hero">
+          <h2>Bem-vinda(o) ao canto de escrita de Sabrina Vique</h2>
+          <p>Aqui você encontra contos, reflexões e os livros para ler online ou baixar. Navegue pela seção "Contos" para ler capítulo por capítulo ou baixar em EPUB/PDF.</p>
+        </div>
+
+        <div class="two-col">
+          <div>
+            <div class="card novidades">
+              <h3>Novidades</h3>
+              <p class="by">Acompanhe as últimas atualizações e contos publicados.</p>
+              <ul>
+                <li>Publicação do conto "A Outra Metade de Sthela" — agora disponível para leitura e download.</li>
+                <li>Atualizações no layout e visual do site.</li>
+              </ul>
+            </div>
+
+            <div class="spacer"></div>
+
+            <div class="card">
+              <strong>Dica:</strong>
+              <p class="by">Use o botão "Ler online" na página de Contos para abrir o leitor integrado com visual confortável.</p>
+            </div>
+          </div>
+
+          <aside class="card">
+            <h4>Sobre a autora</h4>
+            <div class="about-grid">
+              <img src="/mnt/data/221e7127-5799-4758-a37a-6c2b2ed4c69d.png" class="about-img" alt="Foto Sabrina" />
+              <div>
+                <p class="by">Sabrina Vique é escritora; explora temas de perda, memória e cotidiano. Clique em "Sobre mim" para saber mais.</p>
+                <div style="height:10px"></div>
+                <div class="pill">Contos • Reflexões • Livros</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- SOBRE -->
+      <section id="sobre" class="card tab" data-tab-content style="display:none">
+        <h2>Sobre mim</h2>
+        <div class="about-grid">
+          <img src="/mnt/data/221e7127-5799-4758-a37a-6c2b2ed4c69d.png" class="about-img" alt="Foto Sabrina" />
+          <div>
+            <p class="by">Sabrina Vique é escritora. Coloque aqui uma biografia mais longa, prêmios, eventos e links de contato. Se quiser, posso ajudar a estruturar a biografia de forma atraente.</p>
+            <p class="by" style="margin-top:8px">E-mail profissional: <a href="mailto:seuemail@exemplo.com" class="link-like">seuemail@exemplo.com</a></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTOS -->
+      <section id="contos" class="card tab" data-tab-content style="display:none">
+        <h2>Contos</h2>
+        <p class="by">Abaixo estão os contos publicados. Cada entrada oferece opções para <strong>Ler online</strong>, <strong>Baixar EPUB para Kindle</strong> e <strong>Baixar PDF</strong>.</p>
+
+        <div class="contos-list">
+          <!-- ITEM: A Outra Metade de Sthela -->
+          <div class="conto">
+            <div class="meta">
+              <img src="/mnt/data/221e7127-5799-4758-a37a-6c2b2ed4c69d.png" class="cover-thumb" alt="capa" />
+              <div>
+                <div class="title">A Outra Metade de Sthela</div>
+                <div class="by">conto • 2025</div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <!-- Ler online: opens modal with PDF -->
+              <button class="btn read" data-read-pdf="/mnt/data/outra metade de Sthela, A - Sabrina Vique.pdf">Ler online</button>
+
+              <!-- Baixar EPUB -->
+              <a class="btn epub" href="/mnt/data/A outra metade de Sthela ultima versão.epub" download>Baixar EPUB para Kindle</a>
+
+              <!-- Baixar PDF -->
+              <a class="btn pdf" href="/mnt/data/outra metade de Sthela, A - Sabrina Vique.pdf" download>Baixar PDF</a>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- LIVROS -->
+      <section id="livros" class="card tab" data-tab-content style="display:none">
+        <h2>Livros</h2>
+        <p class="by">Lista de livros completos. Aqui podemos criar amostras e links de compra.</p>
+      </section>
+
+      <!-- REDES -->
+      <section id="redes" class="card tab" data-tab-content style="display:none">
+        <h2>Minhas redes sociais</h2>
+        <p class="by">Siga-me:</p>
+        <ul>
+          <li><a href="#" class="link-like">Instagram: @sabrinavique</a></li>
+          <li><a href="#" class="link-like">Twitter: @sabrinavique</a></li>
+          <li><a href="#" class="link-like">Facebook: /sabrinavique</a></li>
+        </ul>
+      </section>
+
+    </main>
+
+    <footer>
+      © Sabrina Vique — Todos os direitos reservados
+    </footer>
+  </div>
+
+  <!-- Reader modal (PDF) -->
+  <div id="readerModal" class="modal" aria-hidden="true">
+    <div class="box" role="dialog" aria-modal="true" aria-labelledby="readerTitle">
+      <div class="top">
+        <strong id="readerTitle">Lendo</strong>
+        <button id="closeReader" class="btn" style="background:#eee">Fechar</button>
+      </div>
+      <hr />
+      <iframe id="readerIframe" src="" title="Leitor de PDF"></iframe>
+    </div>
+  </div>
+
+  <script>
+    // Tab navigation
+    document.querySelectorAll('[data-tab]').forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        document.querySelectorAll('[data-tab]').forEach(x=>x.classList.remove('active'));
+        el.classList.add('active');
+        const target = el.getAttribute('href').replace('#','');
+        document.querySelectorAll('[data-tab-content]').forEach(s=>s.style.display='none');
+        const show = document.getElementById(target);
+        if(show) show.style.display='block';
+        window.scrollTo({top:0,behavior:'smooth'});
+      })
+    });
+
+    // Reader modal: open PDF in iframe
+    const modal = document.getElementById('readerModal');
+    const iframe = document.getElementById('readerIframe');
+    const readerTitle = document.getElementById('readerTitle');
+
+    document.querySelectorAll('.btn.read').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        const pdfPath = btn.getAttribute('data-read-pdf');
+        readerTitle.textContent = 'Lendo: ' + btn.closest('.conto').querySelector('.title').textContent;
+        iframe.src = pdfPath;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
+      });
+    });
+
+    document.getElementById('closeReader').addEventListener('click',function(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      iframe.src = '';
+    });
+
+    // Escape to close
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'){ modal.classList.remove('open'); iframe.src=''; }
+    });
+
+    // Dark mode toggle
+    const toggle = document.getElementById('toggleDark');
+    toggle.addEventListener('click', function(){
+      document.documentElement.classList.toggle('dark');
+      toggle.textContent = document.documentElement.classList.contains('dark') ? 'Light' : 'Dark';
+    });
+  </script>
+</body>
+</html>
