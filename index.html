@@ -37,6 +37,49 @@
     .pdf{background:#f3f4f6;color:#123;border:1px solid rgba(0,0,0,0.05)}
     footer{text-align:center;color:var(--muted);margin-top:22px}
     @media (max-width:700px){header{flex-direction:column;align-items:flex-start}nav{justify-content:flex-start}.cover{display:none}}
+    /* Ajustes para celular (telas menores que 500px) */
+@media (max-width: 500px) {
+
+  /* Reduz o título do conto */
+  .title {
+    font-size: 1rem;
+  }
+
+  /* Reduz a capa */
+  .cover-thumb {
+    width: 55px;
+    height: 78px;
+  }
+
+  /* Ajusta os botões */
+  .btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+  }
+
+  /* Botões mais compactos */
+  .actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* Deixa tudo respirar melhor */
+  .conto {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  /* Ajusta a área meta (capa + título) */
+  .meta {
+    gap: 10px;
+  }
+
+  /* Reduz um pouco a fonte geral da seção */
+  #contos .by {
+    font-size: 0.85rem;
+  }
+}
   </style>
 </head>
 <body>
