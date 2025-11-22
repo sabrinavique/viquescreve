@@ -37,47 +37,19 @@
     .pdf{background:#f3f4f6;color:#123;border:1px solid rgba(0,0,0,0.05)}
     footer{text-align:center;color:var(--muted);margin-top:22px}
     @media (max-width:700px){header{flex-direction:column;align-items:flex-start}nav{justify-content:flex-start}.cover{display:none}}
-    /* Ajustes para celular (telas menores que 500px) */
-@media (max-width: 500px) {
-
-  /* Reduz o título do conto */
-  .title {
-    font-size: 1rem;
+ @media (max-width: 500px) {
+  .conto .cover {
+    width: 150px !important;
   }
 
-  /* Reduz a capa */
-  .cover-thumb {
-    width: 55px;
-    height: 78px;
+  .actions .btn {
+    font-size: 0.9rem;
+    padding: 8px 12px;
   }
 
-  /* Ajusta os botões */
-  .btn {
-    padding: 6px 10px;
-    font-size: 0.8rem;
-    border-radius: 8px;
-  }
-
-  /* Botões mais compactos */
   .actions {
     flex-direction: column;
-    gap: 6px;
-  }
-
-  /* Deixa tudo respirar melhor */
-  .conto {
-    padding: 10px;
-    gap: 10px;
-  }
-
-  /* Ajusta a área meta (capa + título) */
-  .meta {
-    gap: 10px;
-  }
-
-  /* Reduz um pouco a fonte geral da seção */
-  #contos .by {
-    font-size: 0.85rem;
+    gap: 8px !important;
   }
 }
   </style>
@@ -109,27 +81,30 @@
         <p class="muted">Aqui você encontra contos, reflexões e os livros para ler online ou baixar.</p>
       </section>
 
-      <section id="contos" class="card">
-        <h3>Contos publicados</h3>
-        <div class="contos-list">
-          <div class="conto">
-            <div style="display:flex;gap:12px;align-items:center">
-              <img class="cover" src="A OUTRA METADE DE STHELA.png" alt="Capa A Outra Metade de Sthela">
-              <div>
-                <div style="font-weight:800">A Outra Metade de Sthela</div>
-                <div style="color:var(--muted);font-size:0.95rem">conto • 2025</div>
-              </div>
-            </div>
-            <div class="actions">
-              <!-- Ler online: aponta para a página HTML que embute o PDF -->
-              <a class="btn read" href="a_outra_metade_de_sthela.html">Ler online</a>
+    <section id="contos" class="card">
+  <h3>Contos publicados</h3>
 
-              <!-- Baixar EPUB e PDF diretamente -->
-              <a class="btn epub" href="a_outra_metade_de_sthela.epub" download>Baixar EPUB</a>
-              <a class="btn pdf" href="a_outra_metade_de_sthela.pdf" download>Baixar PDF</a>
-            </div>
-          </div>
-        </div>
+  <div class="contos-list">
+
+    <div class="conto" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
+
+      <!-- CAPA MAIOR -->
+      <img class="cover"
+           src="A OUTRA METADE DE STHELA.png"
+           alt="Capa A Outra Metade de Sthela"
+           style="width:200px;height:auto;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+
+      <!-- BOTÕES -->
+      <div class="actions" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+        <a class="btn read" href="a_outra_metade_de_sthela.html">Ler online</a>
+        <a class="btn epub" href="a_outra_metade_de_sthela.epub" download>Baixar EPUB</a>
+        <a class="btn pdf" href="a_outra_metade_de_sthela.pdf" download>Baixar PDF</a>
+      </div>
+
+    </div>
+
+  </div>
+
       </section>
 
       <section id="sobre" class="card" style="display:none">
