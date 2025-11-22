@@ -95,6 +95,48 @@
     font-size: 1rem;
   }
 }
+    /* --- ANIMAÇÕES SUAVES DO SITE --- */
+
+/* Fade-in geral ao carregar elementos */
+.fade {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.7s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animação da capa */
+.capa-conto {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.capa-conto:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+}
+
+/* Botões com transição suave */
+.btn {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  opacity: 0.92;
+}
+
+/* Suavidade na troca de temas */
+html, body, .card, nav a, header, .btn, .capa-conto {
+  transition: background-color 0.4s ease, color 0.4s ease, border 0.4s ease;
+}
+
   </style>
 </head>
 <body>
@@ -119,17 +161,17 @@
     </nav>
 
     <main>
-      <section id="inicio" class="card">
+      <section id="inicio" class="card fade">
         <h2>Bem-vinda(o) ao meu cantinho de escrita</h2>
         <p class="muted">Aqui você encontra contos, reflexões e os livros para ler online ou baixar.</p>
       </section>
 
-  <section id="contos" class="card">
+  <section id="contos" class="card fade">
   <h3>Contos publicados</h3>
 
   <div class="contos-list">
 
-    <div class="conto">
+    <div class="conto fade">
 
       <!-- CAPA -->
       <img src="A OUTRA METADE DE STHELA.png"
@@ -148,7 +190,7 @@
   </div>
 </section>
 
-      <section id="sobre" class="card" style="display:none">
+      <section id="sobre" class="card fade" style="display:none">
         <h3>Sobre a autora</h3>
         <div style="display:flex;gap:12px;align-items:center">
           <img src="fotosabrina.png" alt="Foto Sabrina" style="width:120px;height:120px;object-fit:cover;border-radius:10px">
@@ -159,12 +201,12 @@
         </div>
       </section>
 
-      <section id="livros" class="card" style="display:none">
+      <section id="livros" class="card fade" style="display:none">
         <h3>Livros</h3>
         <p style="color:var(--muted)">Em breve: amostras e links de compra.</p>
       </section>
 
-      <section id="redes" class="card" style="display:none">
+      <section id="redes" class="card fade" style="display:none">
         <h3>Minhas redes sociais</h3>
         <ul>
           <li><a href="#" style="color:var(--muted)">Instagram: @sabrinavique</a></li>
