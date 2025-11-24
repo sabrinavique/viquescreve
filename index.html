@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Sabrina Vique — Escritora</title>
+  <style>
+  :root{
+  --bg:#fff9c7;
+  --card:#fff9c7;
+  --muted:#282120;
+  --accent:#ccc14f;
+  --accent-2:#6a4018;
+  --pill-bg:rgba(30,60,10,0.15);
+  --radius:12px;
+  --max-width:920px;
+  --shadow:0 8px 24px rgba(16,24,40,0.06);
+  --text:#1c2120;
+}
+    .dark { --bg:#0f1113; --card:#0b0d0f; --muted:#98a0a6; --text:#e6eef2; --pill-bg:rgba(255,255,255,0.03); }
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Playfair+Display:wght@400;700&display=swap');
+
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:"Merriweather", Georgia, serif;-webkit-font-smoothing:antialiased}
+    .wrap{max-width:var(--max-width);margin:28px auto;padding:18px}
+    header{display:flex;align-items:center;gap:16px;background:linear-gradient(180deg,var(--accent-2),#2f4b56);color:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+header img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  object-fit:cover;
+  box-shadow:0 0 18px rgba(50,98,14,0.3);
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+
+/* Efeito hover suave */
+header img:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 25px rgba(50,98,14,0.45);
+}
+    nav{margin:18px 0;display:flex;gap:8px;flex-wrap:wrap}
+    nav a{padding:8px 12px;border-radius:999px;background:var(--pill-bg);text-decoration:none;color:var(--accent-2);font-weight:700}
+    nav a.active {
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      color: #fff;
+      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.06);
+    }
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow);margin-bottom:16px}
+    .contos-list{display:flex;flex-direction:column;gap:12px}
+    .conto{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.04);background: var(--card);}
+    /* .cover removed (unused) */
+    .actions{display:flex;gap:8px}
+    .btn{padding:8px 12px;border-radius:8px;border:0;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
+    .read{background:var(--accent-2);color:#fff}
+    .epub{background:linear-gradient(90deg,var(--accent),#3e324b);color:#fff}
+    .pdf{background:#ff5757;color:#fff;border:1px solid rgba(0,0,0,0.05)}
+    footer{text-align:center;color:var(--muted);margin-top:22px}
+    @media (max-width:700px){header{flex-direction:column;align-items:flex-start}nav{justify-content:flex-start}
+  }
+ @media (max-width: 500px) {
+  .conto .capa-conto {
+    width: 150px !important;
+  }
+
+  .actions .btn {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 8px !important;
+  }
+}
+    /* NOVO LAYOUT PARA A SEÇÃO DE CONTOS */
+
+.capa-wrapper {
+  width: 140px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.capa-wrapper img.capa-conto {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* shine swipe applied to wrapper */
+.capa-wrapper::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 0.6s ease, opacity 0.4s ease;
+}
+
+.capa-wrapper:hover::after {
+  opacity: 1;
+  transform: translateX(100%);
+}
+
+.capa-wrapper:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+}
+
+/* Botões organizados em coluna */
+.botoes-conto {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* MOBILE — capa acima, botões abaixo */
+@media (max-width: 600px) {
+  .conto {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .capa-wrapper {
+    width: 160px;
+    margin-bottom: 12px;
+  }
+
+  .botoes-conto {
+    width: 100%;
+    align-items: center;
+  }
+
+  .botoes-conto .btn {
+    width: 80%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+}
+    /* --- ANIMAÇÕES SUAVES DO SITE --- */
+
+/* Fade-in geral ao carregar elementos */
+.fade {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.7s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Botões com transição suave */
+.btn {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  opacity: 0.92;
+}
+
+/* Suavidade na troca de temas */
+html, body, .card, nav a, header, .btn, .capa-wrapper {
+  transition: background-color 0.4s ease, color 0.4s ease, border 0.4s ease;
+}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img src="fotosabrina2.jpg" alt="Sabrina Vique">
+      <div>
+        <h1 style="margin:0;font-family:'Playfair Display', serif">Sabrina Vique</h1>
+        <p style="margin:6px 0 0">Escritora ღ</p>
+      </div>
+      <div style="margin-left:auto">
+        <button id="toggle" style="background:transparent;border:1px solid rgba(255,255,255,0.12);color:#fff;padding:8px 10px;border-radius:8px;cursor:pointer">Dark</button>
+      </div>
+    </header>
+
+    <nav>
+      <a href="#inicio" class="nav-link">Início</a>
+      <a href="#sobre" class="nav-link">Sobre mim</a>
+      <a href="#contos" class="nav-link">Contos</a>
+      <a href="#Indicações" class="nav-link">Indicações</a>
+      <a href="#redes" class="nav-link">Redes sociais e contatos</a>
+    </nav>
+
+    <main>
+      <section id="inicio" class="card fade">
+        <h2>Bem-vinda(o) ao meu cantinho de escrita ☺</h2>
+        <p class="muted">Aqui você encontra indicações de livros e contos escritos por mim para ler online ou baixar.</p>
+      </section>
+
+  <section id="contos" class="card fade">
+  <h3>Contos publicados</h3>
+
+  <div class="contos-list">
+
+    <div class="conto fade">
+
+      <!-- CAPA (envolvida em wrapper para efeito shine) -->
+      <div class="capa-wrapper" aria-hidden="true">
+        <img src="A OUTRA METADE DE STHELA.png"
+             alt="Capa A Outra Metade de Sthela"
+             class="capa-conto">
+      </div>
+
+      <!-- BOTÕES -->
+      <div class="actions botoes-conto">
+        <a class="btn read" href="a_outra_metade_de_sthela.html">Ler online</a>
+        <a class="btn epub" href="a_outra_metade_de_sthela.epub" download>Baixar EPUB</a>
+        <a class="btn pdf" href="a_outra_metade_de_sthela.pdf" download>Baixar PDF</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+      <section id="sobre" class="card fade" style="display:none">
+        <h3>Sobre a autora</h3>
+        <div style="display:flex;gap:12px;align-items:center">
+          <img src="fotosabrina.png" alt="Foto Sabrina" style="width:150px;height:150px;object-fit:cover;border-radius:10px">
+          <div>
+            <p>Eu sou Sabrina Vique — a pessoa que carrega histórias no coração desde que aprendeu o significado das palavras.
+Sou formada em História pela Universidade Estadual do Maranhão e atualmente resido em Araguaína, TO.
+
+Tenho 26 anos e escrevo desde muito jovem. Meu sonho de adolescência sempre foi ser artista, e hoje sigo honrando essa parte de mim através da escrita.
+Atualmente, trabalho em dois projetos de gêneros diferentes e planejo publicá-los de forma independente no futuro. Enquanto isso não acontece, porque, de fato, não é fácil ser escritora independente no Brasil, publicarei meus contos por aqui.
+
+Além de escrever, amo ler, cantar, assistir filmes e perder a noção do tempo conversando com meu gatinho, Nacho.
+Aqui você vai encontrar meus contos, recomendações de livros e um pouco do meu universo literário.
+
+Seja muito bem-vindo, amigo leitor!</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="Indicações" class="card fade" style="display:none">
+        <h3>Indicações</h3>
+        <p style="color:var(--muted)">Em breve</p>
+      </section>
+
+      <section id="redes" class="card fade" style="display:none">
+        <h3>Redes sociais e contatos</h3>
+        <ul>
+<li>
+  <a href="https://instagram.com/viquescreve" target="_blank" style="display:flex;align-items:center;gap:6px;color:var(--muted);">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+    </svg>
+    @viquescreve
+  </a>
+</li>
+          <li>
+  <a href="https://wa.me/5599991563459" target="_blank"
+     style="display:flex;align-items:center;gap:6px;color:var(--muted);">
+    
+    <!-- Ícone WhatsApp -->
+    <svg width="22" height="22" viewBox="0 0 32 32" fill="currentColor">
+      <path d="M16.001 3.2c-7.047 0-12.8 5.645-12.8 12.6 0 2.221.589 4.356 1.716 6.24L3.2 28.8l7.02-1.792c1.788.98 3.81 1.492 5.781 1.492h.001c7.047 0 12.8-5.645 12.8-12.6s-5.753-12.7-12.8-12.7zm0 23.2h-.001c-1.77 0-3.508-.47-5.037-1.356l-.36-.214-4.173 1.061 1.114-4.02-.235-.374a10.25 10.25 0 01-1.589-5.52c0-5.72 4.708-10.4 10.481-10.4 5.774 0 10.482 4.68 10.482 10.4s-4.708 10.423-10.482 10.423zm5.57-7.838c-.304-.152-1.798-.89-2.079-.991-.281-.1-.486-.152-.691.152-.204.305-.793.99-.973 1.193-.18.204-.357.229-.662.076-.304-.152-1.286-.47-2.45-1.497-.904-.803-1.515-1.795-1.693-2.099-.18-.305-.019-.469.133-.62.137-.136.304-.357.456-.533.152-.178.203-.305.305-.508.101-.203.05-.381-.025-.534-.076-.152-.691-1.663-.947-2.277-.25-.602-.504-.521-.691-.53l-.59-.01c-.203 0-.534.076-.813.381-.28.306-1.066 1.04-1.066 2.535 0 1.494 1.093 2.936 1.245 3.143.152.204 2.152 3.281 5.215 4.6.729.308 1.297.492 1.739.63.73.232 1.394.199 1.92.121.586-.087 1.798-.733 2.054-1.442.254-.71.254-1.319.178-1.442-.076-.127-.279-.202-.584-.355z"/>
+    </svg>
+
+    (99) 99156-3459
+  </a>
+</li>
+          <li>
+  <a href="mailto:sabrinavique05@gmail.com"
+     style="display:flex;align-items:center;gap:6px;color:var(--muted);" target="_blank">
+
+    <!-- Ícone de e-mail -->
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 
+               0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+      <polyline points="22,6 12,13 2,6"/>
+    </svg>
+
+    sabrinavique05@gmail.com
+  </a>
+</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      © Sabrina Vique — Todos os direitos reservados
+    </footer>
+  </div>
+
+  <script>
+    // helper: set active link and show section
+    function setActiveLink(link) {
+      document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      document.querySelectorAll('main > section').forEach(s => s.style.display = 'none');
+      const id = link.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'block';
+    }
+
+    // initialize nav links
+    document.querySelectorAll('nav a').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        setActiveLink(a);
+        // update hash without jumping instantly
+        const id = a.getAttribute('href');
+        history.replaceState(null, '', id);
+        window.scrollTo({top:0,behavior:'smooth'});
+      });
+    });
+
+    // set initial active based on hash or default to #inicio
+    (function init() {
+      const hash = location.hash || '#inicio';
+      const initialLink = document.querySelector('nav a[href="'+hash+'"]') || document.querySelector('nav a[href="#inicio"]');
+      if (initialLink) setActiveLink(initialLink);
+    })();
+
+    // dark toggle
+    document.getElementById('toggle').addEventListener('click', function(){
+      document.documentElement.classList.toggle('dark');
+      this.textContent = document.documentElement.classList.contains('dark') ? 'Light' : 'Dark';
+    });
+  </script>
+</body>
+</html>
