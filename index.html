@@ -17,7 +17,6 @@
   --shadow:0 8px 24px rgba(16,24,40,0.06);
   --text:#1c2120;
 }
-    .dark { --bg:#0f1113; --card:#0b0d0f; --muted:#98a0a6; --text:#e6eef2; --pill-bg:rgba(255,255,255,0.03); }
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Playfair+Display:wght@400;700&display=swap');
 
     html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:"Merriweather", Georgia, serif;-webkit-font-smoothing:antialiased}
@@ -188,9 +187,7 @@ html, body, .card, nav a, header, .btn, .capa-wrapper {
         <h1 style="margin:0;font-family:'Playfair Display', serif">Sabrina Vique</h1>
         <p style="margin:6px 0 0">Escritora ღ</p>
       </div>
-      <div style="margin-left:auto">
-        <button id="toggle" style="background:transparent;border:1px solid rgba(255,255,255,0.12);color:#fff;padding:8px 10px;border-radius:8px;cursor:pointer">Dark</button>
-      </div>
+
     </header>
 
     <nav>
@@ -337,11 +334,6 @@ Seja muito bem-vindo, amigo leitor!</p>
       if (initialLink) setActiveLink(initialLink);
     })();
 
-    // dark toggle
-    document.getElementById('toggle').addEventListener('click', function(){
-      document.documentElement.classList.toggle('dark');
-      this.textContent = document.documentElement.classList.contains('dark') ? 'Light' : 'Dark';
-    });
    </script>
 
   <a href="index.html" class="voltar-site">← Voltar ao site</a>
