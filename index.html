@@ -150,6 +150,13 @@
       width: 100%;
       display: block;
     }
+    .conto-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 /* Correção para centralizar no MOBILE */
 @media (max-width: 600px) {
 
@@ -159,7 +166,18 @@
     justify-content: center !important;
     text-align: center;
   }
+.conto-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 
+@media (max-width: 600px) {
+  .conto-inner {
+    align-items: center;
+  }
+}
   .capa-wrapper {
     margin: 0 auto !important;
     display: flex;
@@ -259,16 +277,19 @@
       <h3>Contos publicados</h3>
 
       <div class="contos-list">
-        <div class="conto">
-          <div class="capa-wrapper">
-            <img src="A OUTRA METADE DE STHELA.png" alt="Capa A Outra Metade de Sthela">
-          </div>
+  <div class="conto">
 
-          <div class="actions">
-            <a class="btn read" href="a_outra_metade_de_sthela.html">Ler online</a>
-            <a class="btn epub" href="a_outra_metade_de_sthela.epub" download>Baixar EPUB</a>
-            <a class="btn pdf" href="a_outra_metade_de_sthela.pdf" download>Baixar PDF</a>
-          </div>
+    <div class="conto-inner">
+
+      <div class="capa-wrapper">
+        <img src="A OUTRA METADE DE STHELA.png" alt="Capa A Outra Metade de Sthela">
+      </div>
+
+      <div class="actions">
+        <a class="btn read" href="a_outra_metade_de_sthela.html">Ler online</a>
+        <a class="btn epub" href="a_outra_metade_de_sthela.epub" download>Baixar EPUB</a>
+        <a class="btn pdf" href="a_outra_metade_de_sthela.pdf" download>Baixar PDF</a>
+      </div>
         </div>
       </div>
     </section>
