@@ -113,7 +113,11 @@ nav a:hover {
 
     /* ===== CARDS ===== */
     .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow);margin-bottom:16px}
-    .contos-list {display:flex;flex-direction:column-reverse;gap: 12px;}
+.contos-list {
+  display: flex;
+  flex-direction: column-reverse; /* novos contos aparecem primeiro */
+  gap: 12px;
+}
     .conto{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.04);background: var(--card);}
     /* .cover removed (unused) */
     .actions{display:flex;gap:8px}
